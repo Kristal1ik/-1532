@@ -38,11 +38,15 @@ def setW():
     Status.W = 80
 
 
-def autoclaveStatus():
-    return Status.T
+def autoclaveStatus(n):
+    if n == Status.T:
+        return Status.T
+    else:
+        return 0
 
 
 def day_tick():
+    autoclaveStatus(Status.T)
     Status.location += Status.speed
     Status.distance -= Status.speed
     oxiuse()
