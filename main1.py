@@ -1,5 +1,5 @@
 import math
-from get_data import data
+from get_data import get_data
 
 class Status:
     no_move = False
@@ -73,7 +73,7 @@ def day_tick():
 
 
 if __name__ == "__main__":
-    points = data
+    points = get_data()
     for i in points:
         Status.distance = i[1]
         Status.next_sh = i[0]
