@@ -104,16 +104,28 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+
     # setupUi
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.button_edit.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c", None))
-        self.button_save.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u041a \u043f\u0435\u0440\u0432\u043e\u043c\u0443 \u0434\u043d\u044e", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u041a \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u043c\u0443", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u041a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u0434\u043d\u044e", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"\u041a \u043f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u043c\u0443 \u0434\u043d\u044e", None))
+        self.button_edit.setText(QCoreApplication.translate("MainWindow",
+                                                            u"\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c",
+                                                            None))
+        self.button_save.setText(
+            QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow",
+                                                           u"\u041a \u043f\u0435\u0440\u0432\u043e\u043c\u0443 \u0434\u043d\u044e",
+                                                           None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow",
+                                                             u"\u041a \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u043c\u0443",
+                                                             None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow",
+                                                             u"\u041a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u0434\u043d\u044e",
+                                                             None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow",
+                                                             u"\u041a \u043f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u043c\u0443 \u0434\u043d\u044e",
+                                                             None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"id", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"sh", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"distance", None))
@@ -121,6 +133,7 @@ class Ui_MainWindow(object):
 
 
 class MyWidget(QMainWindow, Ui_MainWindow):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -128,7 +141,8 @@ class MyWidget(QMainWindow, Ui_MainWindow):
         self.button_save.clicked.connect(self.run_save)
 
     def run_save(self):
-        pass
+        self.a = Window()
+        self.a.show()
 
     def run_edit(self):
         global lst
