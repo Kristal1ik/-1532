@@ -38,15 +38,11 @@ def setW():
     Status.W = 80
 
 
-def autoclaveStatus(n):
-    if n == Status.T:
-        return Status.T
-    else:
-        return 0
+def autoclaveStatus():
+    return Status.T
 
 
 def day_tick():
-    autoclaveStatus(Status.T)
     Status.location += Status.speed
     Status.distance -= Status.speed
     oxiuse()
@@ -75,8 +71,9 @@ def day_tick():
     Status.total_oxi += Status.Oxi + Status.SH
     Status.total_fuel += Status.fuel_use
 
+days = []
 
-if __name__ == "__main__":
+def get_days():
     points = get_data()
     for i in points:
         Status.distance = i[1]
@@ -84,9 +81,14 @@ if __name__ == "__main__":
         while Status.distance > 0:
             day_tick()
             Status.day += 1
+            days.append(Status)
         Status.no_move = True
+        if Status.SH < Status.next_sh + 8 and Status.distance <= 0.002:
+            Status.day += 1
         while Status.SH < Status.next_sh + 8 and Status.distance <= 0.002:
             day_tick()
+            days.append(Status)
+            Status.day += 1
         Status.no_move = False
         Status.SH = 8
 
@@ -94,4 +96,5 @@ if __name__ == "__main__":
     print(Status.total_fuel)
     print(Status.total_oxi)
     print(f"Всего кредитов: {Status.total_fuel * 10 + Status.total_oxi * 7}")
-    pass
+    return days
+get_days()
