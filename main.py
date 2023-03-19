@@ -12,11 +12,24 @@ from PyQt5.QtCore import QRect, QMetaObject, QCoreApplication
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QTextEdit, QMenuBar, QApplication, QStatusBar, QMainWindow
 
 
+class Point:
+    def __init__(self, sh, distance):
+        self.sh_point = sh
+        self.distance_point = distance
+
+    def change(self, sh, distance):
+        self.sh_point = sh
+        self.distance_point = distance
+
+
+lst = [Point(248, 21), Point(120, 49), Point(504, 48)]
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(568, 407)
+        MainWindow.resize(600, 500)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.button_edit = QPushButton(self.centralwidget)
@@ -34,6 +47,9 @@ class Ui_MainWindow(object):
         self.button_save = QPushButton(self.centralwidget)
         self.button_save.setObjectName(u"button_save")
         self.button_save.setGeometry(QRect(410, 220, 151, 31))
+        self.label2 = QLabel(self.centralwidget)
+        self.label2.setObjectName(u"label")
+        self.label2.setGeometry(QRect(410, 110, 200, 21))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -69,17 +85,21 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     def run_save(self):
         pass
+    
 
     def run_edit(self):
-        sh_text = self.sh.text()
-        distance_text = self.distance.text()
-
-
-
-class Point:
-    def __init__(self, sh, distance):
-        self.sh_point = sh
-        self.distance_point = distance
+        global lst
+        sh_text = self.sh.toPlainText()
+        print(sh_text)
+        distance_text = self.distance.toPlainText()
+        try:
+            for i in sh_text:
+                i = int(i)
+            for i in distance_text:
+                i = int(i)
+            lst.append(Point(sh_text, distance_text))
+        except:
+            self.label2.setText("Некорректные данные!")
 
 
 if __name__ == '__main__':
