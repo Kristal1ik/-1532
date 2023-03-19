@@ -38,8 +38,8 @@ def setW():
     Status.W = 80
 
 
-def updateAutoclave():
-    pass
+def autoclaveStatus():
+    return Status.T
 
 
 def day_tick():
