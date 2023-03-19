@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(600, 500)
+        MainWindow.resize(1000, 500)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.button_edit = QPushButton(self.centralwidget)
@@ -59,7 +59,27 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+
+
+        self.button_first_day = QPushButton(self.centralwidget)
+        self.button_first_day.setObjectName(u"button_save")
+        self.button_first_day.setGeometry(QRect(630, 50, 200, 50))
+
+
+        self.button_finish_day = QPushButton(self.centralwidget)
+        self.button_finish_day.setObjectName(u"button_save")
+        self.button_finish_day.setGeometry(QRect(630, 120, 200, 50))
+
+        self.button_next_day = QPushButton(self.centralwidget)
+        self.button_next_day.setObjectName(u"button_save")
+        self.button_next_day.setGeometry(QRect(630,190, 200, 50))
+
+        self.button_prev_day = QPushButton(self.centralwidget)
+        self.button_prev_day.setObjectName(u"button_save")
+        self.button_prev_day.setGeometry(QRect(630,260, 200, 50))
         self.retranslateUi(MainWindow)
+
+
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -73,6 +93,11 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"picture", None))
         self.button_save.setText(
             QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
+        self.button_first_day.setText(QCoreApplication.translate("MainWindow", "К первому дню"))
+        self.button_finish_day.setText(QCoreApplication.translate("MainWindow", "К последнему дню"))
+        self.button_next_day.setText(QCoreApplication.translate("MainWindow", "К следующему дню"))
+        self.button_prev_day.setText(QCoreApplication.translate("MainWindow", "К предыдущему дню"))
+
     # retranslateUi
 
 
@@ -85,7 +110,7 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     def run_save(self):
         pass
-    
+
 
     def run_edit(self):
         global lst
