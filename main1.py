@@ -1,5 +1,5 @@
 import math
-
+from get_data import get_data
 
 class Status:
     no_move = False
@@ -53,27 +53,27 @@ def day_tick():
         temp_w = Status.distance * 80 * (Status.M + Status.SH) / (2 * 200)
         Status.speed = Status.V_max * (Status.W / 80) * (200 / (Status.M + Status.SH))
     setW()
-    if Status.SH + Status.SH * math.sin(
-            -math.pi / 2 + (math.pi * (Status.T + 0.5 * Status.Oxi)) / 40) > Status.next_sh + 8:
-        temp_o = 0
-        temp_t = 0
-        temp = ceil((math.asin((Status.next_sh - Status.SH) / Status.SH) + math.pi / 2) * 40 / math.pi)
-        if temp > 30:
-            temp_o = 60
-            temp_t = temp - 30
-        else:
-            temp_o = ceil(temp)
-        Status.Oxi = temp_o
-        Status.fuel_use = math.ceil(sum([i for i in range(temp_t + 1)]) / 11)
-        Status.SH = math.ceil(Status.SH + Status.SH * math.sin(-math.pi / 2 + (math.pi * (temp_t + 0.5 * temp_o)) / 40))
-    else:
-        Status.SH = Status.SH + Status.SH * math.sin(-math.pi / 2 + (math.pi * (Status.T + 0.5 * Status.Oxi)) / 40)
+    # if Status.SH + Status.SH * math.sin(
+    #         -math.pi / 2 + (math.pi * (Status.T + 0.5 * Status.Oxi)) / 40) > Status.next_sh + 8:
+    #     temp_o = 0
+    #     temp_t = 0
+    #     temp = math.ceil((math.asin((Status.next_sh - Status.SH) / Status.SH) + math.pi / 2) * 40 / math.pi)
+    #     if temp > 30:
+    #         temp_o = 60
+    #         temp_t = temp - 30
+    #     else:
+    #         temp_o = math.ceil(temp)
+    #     Status.Oxi = temp_o
+    #     Status.fuel_use = math.ceil(sum([i for i in range(temp_t + 1)]) / 11)
+    #     Status.SH = math.ceil(Status.SH + Status.SH * math.sin(-math.pi / 2 + (math.pi * (temp_t + 0.5 * temp_o)) / 40))
+    # else:
+    Status.SH = Status.SH + Status.SH * math.sin(-math.pi / 2 + (math.pi * (Status.T + 0.5 * Status.Oxi)) / 40)
     Status.total_oxi += Status.Oxi + Status.SH
     Status.total_fuel += Status.fuel_use
 
 
 if __name__ == "__main__":
-    points = [[248, 21], [120, 49], [504, 48]]
+    points = get_data()
     for i in points:
         Status.distance = i[1]
         Status.next_sh = i[0]
