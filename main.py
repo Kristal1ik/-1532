@@ -59,12 +59,9 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
-
-
         self.button_first_day = QPushButton(self.centralwidget)
         self.button_first_day.setObjectName(u"button_save")
         self.button_first_day.setGeometry(QRect(630, 50, 200, 50))
-
 
         self.button_finish_day = QPushButton(self.centralwidget)
         self.button_finish_day.setObjectName(u"button_save")
@@ -72,14 +69,16 @@ class Ui_MainWindow(object):
 
         self.button_next_day = QPushButton(self.centralwidget)
         self.button_next_day.setObjectName(u"button_save")
-        self.button_next_day.setGeometry(QRect(630,190, 200, 50))
+        self.button_next_day.setGeometry(QRect(630, 190, 200, 50))
 
         self.button_prev_day = QPushButton(self.centralwidget)
         self.button_prev_day.setObjectName(u"button_save")
-        self.button_prev_day.setGeometry(QRect(630,260, 200, 50))
+        self.button_prev_day.setGeometry(QRect(630, 260, 200, 50))
+
+        self.id = QTextEdit(self.centralwidget)
+        self.id.setObjectName(u"sh")
+        self.id.setGeometry(QRect(350, 140, 51, 31))
         self.retranslateUi(MainWindow)
-
-
 
         QMetaObject.connectSlotsByName(MainWindow)
 
@@ -110,7 +109,6 @@ class MyWidget(QMainWindow, Ui_MainWindow):
 
     def run_save(self):
         pass
-
 
     def run_edit(self):
         global lst
